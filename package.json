@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --progress --colors --config ./webpack.config.js",
     "build": "webpack --config ./webpack.config.js",
-    "test": "jest --config ./jest.config.js --setupTestFrameworkScriptFile=raf/polyfill"
+    "test": "jest --watch --config ./jest.config.js --setupTestFrameworkScriptFile=raf/polyfill"
   },
   "babel": {
     "presets": [
@@ -28,6 +28,7 @@
     "enzyme-adapter-react-16": "^1.0.0",
     "enzyme-to-json": "^3.0.0",
     "jest": "^21.2.0",
+    "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.0.0",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.8.2"

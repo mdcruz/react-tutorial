@@ -49,13 +49,13 @@ export default class TodoApp extends React.Component {
     render() {
         return (
             <div>
-                <h2> Minimal Todo App built with React </h2>
+                <h2 className="appTitle">Minimal Todo App built with React</h2>
                 <input
                     type="text"
                     placeholder="What do you want to do today?"
                     ref={(c => this._todoInputField = c)}
                 />
-                <button onClick={this.addTodo}>Add Todo</button>
+                <button className="addTodo" onClick={this.addTodo}>Add Todo</button>
                 <VisibleTodoList
                     visibleTodos={this.getTodos()}
                     visibilityFilter = {this.state.visibilityFilter}
@@ -65,7 +65,7 @@ export default class TodoApp extends React.Component {
                 <div> {
                     this.visibilityFilters.map(
                         visibilityFilter =>
-                            <button 
+                            <button className= {visibilityFilter}
                                 key={visibilityFilter} 
                                 onClick={() => this.changeVisibilityFilter(visibilityFilter) }>
                                 {visibilityFilter.replace('_', ' ')}
