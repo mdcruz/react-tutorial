@@ -1,5 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`SingleTodo component renders correctly 1`] = `
+<li
+  className=""
+>
+  <input
+    checked={undefined}
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <label />
+  <button
+    onClick={[Function]}
+  >
+    Delete
+  </button>
+</li>
+`;
+
 exports[`TodoApp component renders correctly 1`] = `
 <div>
   <h2
@@ -7,16 +25,23 @@ exports[`TodoApp component renders correctly 1`] = `
   >
     Minimal Todo App built with React
   </h2>
-  <input
-    placeholder="What do you want to do today?"
-    type="text"
-  />
-  <button
-    className="addTodo"
-    onClick={[Function]}
+  <form
+    className="addTodoForm"
+    onSubmit={[Function]}
   >
-    Add Todo
-  </button>
+    <input
+      className="todoField"
+      onChange={[Function]}
+      placeholder="What do you want to do today?"
+      type="text"
+      value=""
+    />
+    <button
+      disabled={true}
+    >
+      Add todo
+    </button>
+  </form>
   <div>
     <h3>
       ALL TODOS
@@ -49,5 +74,18 @@ exports[`TodoApp component renders correctly 1`] = `
     </button>
      
   </div>
+</div>
+`;
+
+exports[`VisibleTodoList component renders correctly 1`] = `
+<div>
+  <h3>
+    test filter
+  </h3>
+  <ul>
+    <li>
+      Nothing to see here
+    </li>
+  </ul>
 </div>
 `;

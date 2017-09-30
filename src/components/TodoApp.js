@@ -7,16 +7,20 @@ export default class TodoApp extends React.Component {
         this.visibilityFilters = ["ALL_TODOS", "ACTIVE_TODOS", "COMPLETED_TODOS"];
         this.state = {
             todos: this.props.todoActions.getAllTodos(),
-            visibilityFilter: "ALL_TODOS"
+            visibilityFilter: 'ALL_TODOS',
+            value: ''
         };
     }
 
-    addTodo = () => {
-        if (this._todoInputField.value) {
-            this.props.todoActions.addTodo(this._todoInputField.value);
-            this.setState({todos: this.props.todoActions.getAllTodos()});
-            this._todoInputField.value = '';
-        }
+    handleChange = (event) => {
+      this.setState({value: event.target.value});
+    }
+  
+    addTodo = (event) => {
+      this.props.todoActions.addTodo(this.state.value);
+      this.setState({todos: this.props.todoActions.getAllTodos()});
+      this.setState({ value: '' }); 
+      event.preventDefault();
     }
 
     completeTodo = (todoId) => {
@@ -45,17 +49,15 @@ export default class TodoApp extends React.Component {
                 return this.state.todos;
         }
     }
-
+    
     render() {
         return (
             <div>
                 <h2 className="appTitle">Minimal Todo App built with React</h2>
-                <input
-                    type="text"
-                    placeholder="What do you want to do today?"
-                    ref={(c => this._todoInputField = c)}
-                />
-                <button className="addTodo" onClick={this.addTodo}>Add Todo</button>
+                <form className="addTodoForm" onSubmit={(e) => this.addTodo(e)}>
+                    <input className="todoField" type="text" value={this.state.value} onChange={(e) => this.handleChange(e)} placeholder="What do you want to do today?" />
+                    <button disabled={!this.state.value}>Add todo</button>
+                </form>
                 <VisibleTodoList
                     visibleTodos={this.getTodos()}
                     visibilityFilter = {this.state.visibilityFilter}

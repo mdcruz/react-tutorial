@@ -26,11 +26,14 @@ describe('Component: TodoApp', () => {
         expect(h2Element.text()).toBe('Minimal Todo App built with React');
     });
 
-    it('should show button for adding todos', () => {
+    it('should show form for adding todos', () => {
         const todoWrapper = mount(<TodoApp todoActions={todoActions} />);
-        const buttonElement = todoWrapper.find('.addTodo');
+        const formElement = todoWrapper.find('.addTodoForm');
 
-        expect(buttonElement).toHaveLength(1);
+        expect(formElement).toHaveLength(1);
+        expect(formElement.instance().children).toHaveLength(2);
+        expect(formElement.instance().children[0].type).toBe('text');
+        expect(formElement.instance().children[1].type).toBe('submit');
     });
 
     it('should change the text label correctly when todo buttons are clicked', () => {
@@ -44,5 +47,36 @@ describe('Component: TodoApp', () => {
 
         const activeTodoButton = todoWrapper.find('.ACTIVE_TODOS').simulate('click');
         expect(activeTodoButton.text()).toBe('ACTIVE TODOS');
+    });
+
+    it('should call the change visibility onclick callback correctly', () => {
+        const todoWrapper = shallow(<TodoApp todoActions={todoActions} />);
+        const handleClickSpy = jest.spyOn(todoWrapper.instance(), 'changeVisibilityFilter');
+        todoWrapper.find('.ACTIVE_TODOS').simulate('click');
+        
+        expect(handleClickSpy).toHaveBeenCalled();
+        expect(handleClickSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should call the add todo onsubmit callback correctly', () => {
+        const todoWrapper = shallow(<TodoApp todoActions={todoActions} />);
+        const handleClickSpy = jest.spyOn(todoWrapper.instance(), 'addTodo');
+        todoWrapper.find('.addTodoForm').simulate('submit', {
+            preventDefault: () => { }
+        });
+
+        expect(handleClickSpy).toHaveBeenCalled();
+        expect(handleClickSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should call the text onchange callback correctly', () => {
+        const todoWrapper = shallow(<TodoApp todoActions={todoActions} />);
+        const handleChangeSpy = jest.spyOn(todoWrapper.instance(), 'handleChange');
+        todoWrapper.find('.todoField').simulate('change', {
+            target: () => { }
+        });
+
+        expect(handleChangeSpy).toHaveBeenCalled();
+        expect(handleChangeSpy).toHaveBeenCalledTimes(1);
     });
 });
