@@ -2,7 +2,7 @@ import React from 'react';
 import VisibleTodoList from './VisibleTodoList';
 
 export default class TodoApp extends React.Component {
-    constructor(props) {
+    constructor (props) {
         super(props);
         this.visibilityFilters = ["ALL_TODOS", "ACTIVE_TODOS", "COMPLETED_TODOS"];
         this.state = {
@@ -12,32 +12,32 @@ export default class TodoApp extends React.Component {
         };
     }
 
-    handleChange = (event) => {
+    handleChange (event) {
       this.setState({value: event.target.value});
     }
   
-    addTodo = (event) => {
+    addTodo (event) {
       this.props.todoActions.addTodo(this.state.value);
       this.setState({todos: this.props.todoActions.getAllTodos()});
       this.setState({ value: '' }); 
       event.preventDefault();
     }
 
-    completeTodo = (todoId) => {
+    completeTodo (todoId) {
         this.props.todoActions.completeTodo(todoId);
         this.setState({todos: this.props.todoActions.getAllTodos()});
     }
 
-    removeTodo = (todoId) => {
+    removeTodo (todoId) {
         this.props.todoActions.removeTodo(todoId);
         this.setState({todos: this.props.todoActions.getAllTodos()});
     }
 
-    changeVisibilityFilter = (visibilityFilter) => {
+    changeVisibilityFilter (visibilityFilter) {
         this.setState({ visibilityFilter: visibilityFilter });
     }
 
-    getTodos = () => {
+    getTodos () {
         switch (this.state.visibilityFilter) {
             case "ALL_TODOS":
                 return this.state.todos;
@@ -50,7 +50,7 @@ export default class TodoApp extends React.Component {
         }
     }
     
-    render() {
+    render () {
         return (
             <div>
                 <h2 className="appTitle">Minimal Todo App built with React</h2>

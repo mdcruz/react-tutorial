@@ -1,4 +1,3 @@
-import Todo from 'TodoObject'
 import TodoActions from 'TodoActions';
 
 describe('TodoActions', () => {

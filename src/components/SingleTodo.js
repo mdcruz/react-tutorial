@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default class SingleTodo extends React.Component {
-    render() {
+    render () {
         return (
             <li className={this.props.isDone ? "done": ""}>
                 <input

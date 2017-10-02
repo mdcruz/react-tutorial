@@ -2,7 +2,7 @@ import React from 'react';
 import SingleTodo from './SingleTodo'
 
 export default class VisibleTodoList extends React.Component {
-    render() {
+    render () {
         return (
             <div>
                 <h3>{this.props.visibilityFilter.replace('_', ' ')}</h3>
