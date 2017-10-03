@@ -6,5 +6,6 @@ module.exports = {
         TodoActions: '<rootDir>/src/library/TodoActions.js',
         Todo: '<rootDir>/src/library/Todo.js',
         TodoObject: '<rootDir>/src/library/Todo.js'
-    }
+    },
+    testPathIgnorePatterns: ['/test/functional']
 }

@@ -5,14 +5,15 @@
         "es6": true,
         "node": true
     },
+    "parser": "babel-eslint",
     "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 6,
         "ecmaFeatures": {
             "jsx": true
-        },
-        "sourceType": "module"
+        }
     },
     "rules": {
-        "no-const-assign": "warn",
         "no-this-before-super": "warn",
         "no-undef": "warn",
         "no-unreachable": "warn",
@@ -22,8 +23,8 @@
         "space-before-blocks": "warn",
         "space-before-function-paren": "warn",
         "no-extra-semi": "warn",
-        "react/jsx-uses-react": "error",
-        "react/jsx-uses-vars": "error"
+        "react/jsx-uses-vars": "warn",
+        "react/display-name": "warn"
     },
     "globals": {
         "describe": true,
@@ -31,7 +32,8 @@
         "beforeEach": true,
         "it": true,
         "expect": true,
-        "jest": true
+        "jest": true,
+        "browser": true
     },
     "plugins": [
         "react"

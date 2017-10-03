@@ -38,6 +38,7 @@ exports[`TodoApp component should render correctly 1`] = `
     />
     <button
       disabled={true}
+      id="addTodoButton"
     >
       Add todo
     </button>
