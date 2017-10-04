@@ -9,7 +9,7 @@ export default class SingleTodo extends React.Component {
                     onChange={() => this.props.completeTodo(this.props.todoId)}
                     type="checkbox"/>
                 <label>{this.props.text}</label>
-                <button
+                <button id="deleteButton"
                     onClick={() => this.props.removeTodo(this.props.todoId)}>
                         Delete
                 </button>

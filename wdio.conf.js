@@ -44,7 +44,7 @@ exports.config = {
         // 5 instances get started at a time.
         maxInstances: 5,
         //
-        browserName: 'firefox'
+        browserName: 'chrome'
     }],
     //
     // ===================
@@ -118,12 +118,12 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: http://webdriver.io/guide/testrunner/reporters.html
-    // reporters: ['dot'],
+    reporters: ['spec'],
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     mochaOpts: {
-        ui: 'bdd'
+        ui: 'tdd'
     },
     //
     // =====
@@ -155,8 +155,11 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: function () {
+        var chai = require('chai');
+        global.expect = chai.expect;
+        chai.should();
+    },
     //
     /**
      * Hook that gets executed before the suite starts

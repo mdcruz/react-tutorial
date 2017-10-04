@@ -11,6 +11,7 @@ exports[`SingleTodo component should render correctly 1`] = `
   />
   <label />
   <button
+    id="deleteButton"
     onClick={[Function]}
   >
     Delete

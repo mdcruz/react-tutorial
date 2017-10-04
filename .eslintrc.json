@@ -33,7 +33,9 @@
         "it": true,
         "expect": true,
         "jest": true,
-        "browser": true
+        "browser": true,
+        "suite": true,
+        "test": true
     },
     "plugins": [
         "react"

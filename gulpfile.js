@@ -20,7 +20,7 @@ gulp.task('build', function () {
         .pipe(gulp.dest('dist/'));
 })
 
-gulp.task('start', ['clean', 'build'], function () {
+gulp.task('start-application', ['clean', 'build'], function () {
     new webpackDevServer(webpack(webpackConfig), {
         contentBase: path.join(__dirname, 'dist'),
         port: 8000,
@@ -30,6 +30,10 @@ gulp.task('start', ['clean', 'build'], function () {
         gutil.log('Application running on localhost 8080');
     })
 })
+
+gulp.task('stop-application', shell.task('pkill -f webpack'))
+
+gulp.task('stop-selenium', shell.task('pkill -f selenium-standalone'))
 
 gulp.task('unit', shell.task('npm test'))
 
@@ -44,12 +48,11 @@ gulp.task('start-selenium', function (done) {
     })
 })
 
-gulp.task('stop-application', shell.task('pkill -f webpack selenium-standalone'))
-
 gulp.task('functional', ['start-selenium'], function () {
     return gulp.src('wdio.conf.js')
         .pipe(webdriver({
             logLevel: 'silent',
+            reporters: ['spec'],
             framework: 'mocha'
         })).once('end', () => {
             selenium.child.kill();
