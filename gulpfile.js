@@ -40,7 +40,7 @@ gulp.task('unit', shell.task('npm test'))
 gulp.task('start-selenium', function (done) {
     selenium.install (function (error) {
         if (error) return done(error);
-        selenium.start(function (error, child) {
+        return selenium.start(function (error, child) {
             if (error) return done(error);
             selenium.child = child;
             done();
@@ -54,9 +54,7 @@ gulp.task('functional', ['start-selenium'], function () {
             logLevel: 'silent',
             reporters: ['spec'],
             framework: 'mocha'
-        })).once('end', () => {
-            selenium.child.kill();
-        })
+        }))
 })
 
 gulp.task('run-all-tests', ['unit', 'functional'])
