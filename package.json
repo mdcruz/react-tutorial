@@ -27,6 +27,7 @@
     "geckodriver": "^1.9.0",
     "gulp": "^3.9.1",
     "gulp-shell": "^0.6.3",
+    "gulp-sitespeedio": "^1.1.0",
     "gulp-util": "^3.0.8",
     "gulp-webdriver": "^2.0.3",
     "jest": "^21.2.0",

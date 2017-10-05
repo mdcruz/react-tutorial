@@ -8,7 +8,13 @@ const gulp = require('gulp'),
     webpackStream = require('webpack-stream'),
     del = require('del'),
     webpackConfig = require('./webpack.config'),
-    webpackDevServer = require('webpack-dev-server');
+    webpackDevServer = require('webpack-dev-server'),
+    sitespeedio = require('gulp-sitespeedio');
+
+gulp.task('sitespeedio', sitespeedio({
+    urls: ['http://localhost:8000'],
+    browser: 'firefox'
+}))
 
 gulp.task('clean', function () {
     return del([path.join(__dirname, 'dist/*.js')]);
