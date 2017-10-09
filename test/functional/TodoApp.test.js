@@ -1,4 +1,3 @@
-
 suite('Todo Application', function () {
     test('should add a new todo item', function () {
         browser.url('/')

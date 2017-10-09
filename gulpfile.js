@@ -10,7 +10,7 @@ const gulp = require('gulp'),
     webpackConfig = require('./webpack.config'),
     webpackDevServer = require('webpack-dev-server'),
     sitespeedio = require('gulp-sitespeedio');
-
+    
 gulp.task('sitespeedio', sitespeedio({
     urls: ['http://localhost:8000'],
     browser: 'firefox'

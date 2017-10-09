@@ -44,7 +44,11 @@ exports.config = {
         // 5 instances get started at a time.
         maxInstances: 5,
         //
-        browserName: 'chrome'
+        browserName: 'chrome',
+        chromeOptions: {
+            args: ['--headless', '--disable-gpu', '--window-size=1280,800'],
+            binary: '/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary'
+        }
     }],
     //
     // ===================
